@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementando o ChartJs</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--importar um codigo/tag script-->
+</head>
+
+<body style="display: flex;"> 
+    <div>
+        <canvas id="myChart" style="position: relative; height:40vh; width:40vw"></canvas> <!--tela em branco para desenhar o que quiser-->
+    </div>
+
+    <div>
+        <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas> 
+    </div>
+</body>
+<script>
+    //GRAFICO DE LINHAS
+    const labels = [
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{ //metricas
+            label: 'Temperatura',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [30, 29, 28, 25, 22, 23],          //dados, 1posicao valor = 0 / posicao da linha
+        },
+        {
+            label: 'Umidade',
+            backgroundColor: 'rgb(0, 0, 255)',
+            borderColor: 'rgb(0, 0, 255)',
+            data: [80, 82, 80, 85, 84, 83],  
+        }
+    ]
+    };
+
+    const config = { 
+        type: 'line', //tipo de grafico no caso: grafico de linhas/ "bar" -->grafico de barra/ "pie"-->pizza
+        data: data, //tipo de dados, no caso tipo data
+        options: {} 
+    };
+    //GRAFICO BARRAS
+    const labels2 = [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho',
+    ];
+    const data2 = {
+        labels: labels2,
+        datasets: [{ //metricas
+            label: 'Temperatura Média',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [22, 24, 27, 23, 20, 18],          //dados, 1posicao valor = 0 / posicao da linha
+        },
+        {
+            label: 'Umidade Média',
+            backgroundColor: 'rgb(0, 0, 255)',
+            borderColor: 'rgb(0, 0, 255)',
+            data: [90, 89, 93, 87, 88, 82],  
+        }
+    ]
+    };
+
+    const confi2 = { 
+        type: 'bar', 
+        data: data2, 
+        options: {} 
+    };
+</script>
+<script>
+    const myChart = new Chart( 
+        document.getElementById('myChart'), //chama a funcao id:mychart
+        config //informar as configuracoes do grafico
+    );
+
+    const myChart2 = new Chart( 
+        document.getElementById('myChart2'), 
+        confi2
+    );
+</script>
+
+</html>
